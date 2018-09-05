@@ -3,6 +3,10 @@
 const sequelize = require('./sequelize');
 
 
+module.exports = {
+    // set a default connection
+    defaultConn: sequelize,
 
-
-module.exports = { sequelize };
+    // expose other connection options
+    sequelize
+};
