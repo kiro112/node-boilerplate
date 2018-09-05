@@ -1,3 +1,8 @@
 'use strict';
 
-// Export database connections
+const sequelize = require('./sequelize');
+
+
+
+
+module.exports = { sequelize };

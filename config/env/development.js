@@ -6,10 +6,17 @@ module.exports = {
         port: 3000
     },
     database: {
-        host: 'localhost',
-        dialect: 'mysql',
-        port: 3306,
-        operatorsAliases: false,
-        logging: true
+        sequelize: {
+            db_name: 'boilerplate_db',
+            db_user: 'root',
+            db_password: 'toor',
+            options: {
+                host: 'localhost',
+                dialect: 'mysql',
+                port: '3306',
+                operatorsAliases: false,
+                // logging: false
+            }
+        }
     }
 };
