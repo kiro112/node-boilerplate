@@ -10,5 +10,8 @@ router.del = router.delete;
 
 
 router.post('/', user.create);
+router.get('/', user.retrieveAll);
+router.get('/:id', user.retrieveById);
+
 
 module.exports = router;

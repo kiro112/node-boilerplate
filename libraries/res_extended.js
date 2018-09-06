@@ -7,23 +7,23 @@ module.exports = () => {
         const response = {};
         const origSend = res.send;
 
-        res.warn = (status, error) => {
-            if (typeof error === 'undefined' ) {
-                error = status;
-                status = 400;
-            }
+        res.warn = (error) => {
+            
+            let status = (res.statusCode === 200)
+                        ? 400
+                        : res.statusCode;
 
             res.status(status)
-                .send(error);
+                .send({ error, success: false });
         };
 
         res.send = (data) => {
             res.send = origSend;
 
             if (typeof data === 'undefined' && Object.keys(response).length > 0) {
+                response.success = true;
                 return res.send(response);
             }
-
             res.send(data);
         };
 
