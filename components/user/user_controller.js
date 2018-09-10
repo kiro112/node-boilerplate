@@ -1,6 +1,6 @@
 'use strict';
 
-const userModel = require('./userModel');
+const userModel = require('./user_model');
 
 
 /**

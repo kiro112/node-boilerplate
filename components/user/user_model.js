@@ -1,6 +1,6 @@
 'use strict';
 
-const userModel = require('./../../database').defaultConn.user;
+const userModel = require('../../database').defaultConn.user;
 
 // Insert new user
 // Parameters
