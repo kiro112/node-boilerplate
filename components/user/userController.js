@@ -168,8 +168,115 @@ const retrieveById = (req, res, next) => {
         });
 };
 
+
+/**
+ * @api {del} /user/:id     Remove user
+ * @apiDescription delete user
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * 
+ * @apiParam {String} id    user's uniq id
+ * 
+ * @apiExample {curl} Sample-Request:
+ * curl -X DELETE \
+ *    http://localhost:3000/user/1dc5794e-555c-4f5b-9aff-d71b7035e7bf \
+ *   -H 'cache-control: no-cache' \
+ *   -H 'postman-token: 25c281f2-855f-dac9-7856-07ff6ec7742c'
+ * 
+ * @apiSuccessExample {json} Sample-Response:
+ * HTTP1.1/200 OK
+ * {
+ *     "data": {
+ *         "message": "User deleted successfuly."
+ *     },
+ *     "success": true
+ * }
+ * 
+ * @apiErrorExample {json} Sample-Error:
+ * HTTP1.1/400 Not Found
+ * {
+ *    "error": {
+ *        "message": " Failed to delete user."
+ *    },
+ *    "success": false
+ * }
+ */
+const removeById = (req, res, next) => {
+    const id = req.params.id;
+
+    userModel.destroyById({ id })
+        .then(result => {
+            
+            if (!result) {
+                return res.warn({ message: 'Failed to delete user.' });
+            }
+
+            return res.status(200)
+                .data({ message: 'User deleted successfuly.' })
+                .send();
+        })
+        .catch(err => {
+            return next(err);
+        });
+};
+
+
+/**
+ * @api {put} /user/:id Update
+ * @apiDescription Update user details
+ * @apiGroup User
+ * @apiVersion 1.0.0
+ * 
+ * @apiParam {String} name      user's name
+ *  
+ * @apiSuccessExample {json} sample-response:
+ * HTTP1.1/200 OK
+ * {
+ *    "data": {
+ *        "message": "User updated successfuly."
+ *    },
+ *    "success": true
+ * }
+ * 
+ * @apiExample {curl} Sample-Request
+ *   curl -X PUT \
+ *    http://localhost:3000/user/7888b106-a969-4a26-82d7-a932d71c6dca \
+ *    -H 'cache-control: no-cache' \
+ *    -H 'content-type: application/json' \
+ *    -H 'postman-token: 0d345706-8c1e-128a-5d50-9111c30b28a8' \
+ *    -d '{
+ *  	"name": "Jai Malanay"
+ *  }'
+ */
+const updateById = (req, res, next) => {
+    const id = req.params.id;
+
+    // todo: add validation
+    let data = req.body;
+
+    userModel
+        .updateById({ id, data })
+        .then(result => {
+
+            let [affectedRows] = result;
+
+            if (result.affectedRows) {
+                return res.warn({ message: 'Failed to update user.' });
+            }
+
+            return res.status(200)
+                .data({ message: 'User updated successfuly.' })
+                .send();
+        })
+        .catch(err => {
+            return next(err);
+        });
+};
+
 module.exports = { 
     create,
     retrieveAll,
-    retrieveById
+    retrieveById,
+    removeById,
+    updateById,
 };

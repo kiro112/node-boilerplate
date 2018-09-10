@@ -34,15 +34,27 @@ const findAndCountAll = ({ where = {}, offset = 0, limit = 10 }) => {
 };
 
 
+const destroyById = ({ id = null }) => {
+    return userModel.destroy({ where: { id } });
+};
+
 
 const findById = id => {
     return userModel.findById(id)
         .then(res => res ? res.toJSON() : res);
 };
 
+const updateById = ({ id = null, data = {} }) => {
+    return userModel.update(data, {
+        where: { id }
+    });
+};
+
 
 module.exports = {
     create,
     findAndCountAll,
-    findById
+    findById,
+    destroyById,
+    updateById,
 };

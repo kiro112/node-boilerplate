@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName,
         freezeTablename: true,
         timestamps: true,
-        paranoid: true, // soft delete :: timestamp related
+        paranoid: false,    // true ? soft delete : no     > timestamp related
         deletedAt: 'deleted',
         createdAt: 'created',
         updatedAt: 'updated'
