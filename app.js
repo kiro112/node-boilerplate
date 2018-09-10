@@ -2,7 +2,6 @@
 
 const express = require('express');
 const path = require('path')
-const logger = require('morgan');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const methodOverride = require('method-override');
@@ -10,7 +9,9 @@ const compression = require('compression');
 
 const app = express();
 
-app.use(logger('dev'));
+require('./libraries/logger')(app);
+
+
 app.use(helmet());
 app.use(methodOverride());
 app.use(bodyParser.json());
