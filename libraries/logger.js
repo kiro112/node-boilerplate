@@ -21,7 +21,7 @@ module.exports = app => {
 
 
     // set morgan variables
-    //  save x-access-token and userId
+    // todo: save x-access-token and userId
     morgan.token('headers', function getHeaders (req) {
         return JSON.stringify(req.headers);
     });
