@@ -2,7 +2,7 @@
 
 module.exports = {
     app: {
-        name: 'Boilerplatex',
+        name: 'MyBoilerplate',
         port: 3000
     },
     database: {

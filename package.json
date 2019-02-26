@@ -13,10 +13,12 @@
     "app-module-path": "^2.2.0",
     "body-parse": "^0.1.0",
     "cluster": "^0.7.7",
+    "compression": "^1.7.3",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
     "method-override": "^3.0.0",
     "moment": "^2.22.2",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "os": "^0.1.1",
@@ -29,16 +31,20 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "empty-logs": "pm2 flush",
+    "dev": "nodemon ./bin/server.js",
+    "start": "pm2 start ./ecosystem.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kiro112/node-boilerplate.git"
   },
-  "author": "",
+  "author": "kiro112",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kiro112/node-boilerplate/issues"

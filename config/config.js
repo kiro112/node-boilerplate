@@ -22,6 +22,6 @@ if (!process.env.NODE_ENV) {
 }
 
 _.merge(config, require('./env/'+process.env.NODE_ENV));
-console.log(`Starting ${config.app.name} on ${process.env.NODE_ENV || 'development'} environment`);
+console.log(`Starting ${config.app.name} on ${process.env.NODE_ENV} environment`);
 
 module.exports = config;
