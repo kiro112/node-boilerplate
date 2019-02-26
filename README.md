@@ -17,5 +17,5 @@ Note: Not yet sure which to use /env directory or env of pm2 but let just put en
 
 
 ## pm2-logrotate
-> Install `pm2 install pm2-logrotate`
 [documentation](https://github.com/keymetrics/pm2-logrotate)
+> Install `pm2 install pm2-logrotate`
