@@ -1,3 +1,4 @@
+// main config
 'use strict';
 
 const _ = require('lodash');
